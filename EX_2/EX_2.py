@@ -1,0 +1,5 @@
+print('Заполните список.Цифры вводить через ",".')
+tbl = map(int, (input().split(',')))
+q = int(input('Введите число: '))
+rslt = min(tbl, key=lambda q2: abs(q - q2))
+print(rslt)
