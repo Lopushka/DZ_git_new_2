@@ -1,17 +1,27 @@
-import re
+eng = 'QWERTYUIOPASDFGHJKLZXCVBNM'
 
+rus = 'ЁЙЦУКЕНГШЩЗХЪЭЖДЛОРПАВЫФЯЧСМИТЬБЮ'
 
-def Cyr(txt):
-    return bool(re.search('[а-яА-Я]', txt))
+glossary_eng = {1: 'AEIOULNSTR', 2: 'DG', 3: 'BCMP',
+                4: 'FHVWY', 5: "K", 8: 'JX', 10: 'QZ'}
+glossary_ru = {1: 'АВЕИНОРСТ', 2: 'ДКЛМПУ', 3: 'БГЁЬЯ',
+               4: 'ЙЫ', 5: 'ЖЗХЦЧ', 8: 'ШЭЮ', 10: 'ФШЪ'}
 
+txt = input('Введите слово: ').upper()
 
-eng = {1: 'AEIOULNSTR', 2: 'DG', 3: 'BCMP',
-       4: 'FHVWY', 5: 'K', 8: 'JZ', 10: 'QZ'}
-ru = {1: 'АВЕИНОРСТ', 2: 'ДКЛМПУ', 3: 'БГЁЬЯ',
-      4: 'ЙЫ', 5: 'ЖЗХЦЧ', 8: 'ШЭЮ', 10: 'ФЩЪ'}
-txt = input('give my a word: ').upper()
-if Cyr(txt):
-    print(
-        f'Cтоимость слова: {sum([j for i in txt for j, e in ru.items() if i in e])}')
+if txt[0] in eng:
+    s = 0
+    for i in txt:
+        for j, k in glossary_eng.items():
+            if i in k:
+                s += j
+    print(f'cost: {s}')
 else:
-    print(f'Cost: {sum([j for i in txt for j, e in eng.items() if i in e])}')
+    if txt[0] in rus:
+        s = 0
+        for i in txt:
+
+            for j, k in glossary_ru.items():
+                if i in k:
+                    s += j
+    print(f'стоимость слова: {s}')
